@@ -207,7 +207,11 @@ class YouTube(Plugin):
 
         params = {
             "video_id": video_id,
-            "el": "player_embedded"
+	    # Issues when trying to download Youtube videos, looks like 'el' value is key here
+	    # https://github.com/Tyrrrz/YoutubeExplode/issues/66#issuecomment-348685419
+            #"el": "player_embedded"
+	    #"el": "detailpage" 
+	    "el": "embedded"
         }
         res = http.get(API_VIDEO_INFO, params=params, headers=HLS_HEADERS)
         return parse_query(res.text, name="config", schema=_config_schema)
