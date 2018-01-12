@@ -17,7 +17,9 @@ try:
 
     # We tell urllib3 to disable warnings about unverified HTTPS requests,
     # because in some plugins we have to do unverified requests intentionally.
-    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    # CUSTOM: Swap out below to restore
+    #urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    urllib3.disable_warnings()
 except (ImportError, AttributeError):
     pass
 
